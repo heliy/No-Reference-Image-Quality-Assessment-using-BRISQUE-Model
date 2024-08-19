@@ -58,7 +58,7 @@ def AGGDfit(structdis):
     gam = 0.2
 
     # vectorized function call for best fitting parameters
-    vectfunc = np.vectorize(func, otypes = [np.float], cache = False)
+    vectfunc = np.vectorize(func, otypes = [float], cache = False)
     
     # calculate best fit params
     gamma_best = vectfunc(gam, prevgamma, prevdiff, sampling, rhatnorm)
@@ -193,14 +193,14 @@ def test_measure_BRISQUE(imgPath):
 
     return qualityscore
 
-# exit if input argument not given
-if(len(sys.argv) != 2):
-    print("Please give input argument of the image path.")
-    print("Arguments expected: <image_path>")
-    print("--------------------------------")
-    print("Exiting")
-    sys.exit(0)
-
-# calculate quality score
-qualityscore = test_measure_BRISQUE(sys.argv[1])
-print "Score of the given image: ", qualityscore
+if __name__ == "__main__":
+    # exit if input argument not given
+    if(len(sys.argv) != 2):
+        print("Please give input argument of the image path.")
+        print("Arguments expected: <image_path>")
+        print("--------------------------------")
+        print("Exiting")
+        sys.exit(0)
+    # calculate quality score
+    qualityscore = test_measure_BRISQUE(sys.argv[1])
+    print("Score of the given image: ", qualityscore)
